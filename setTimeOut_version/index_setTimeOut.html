@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RockPaperScissors</title>
+	<link href="palm.png" rel="icon">
+	<link href="reset.css" rel="stylesheet" type="text/css">
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body>
+	<br>
+	<h1>Wanna play Rock Paper Scissors?</h1>
+	<br>
+	<h2>Humans Vs. Computers... First to 5 wins. </h2>
+	<br>
+	<p>(((Loser is forever dominated!!!!)))</p>
+	<!--Below is the button for the users input, the first line of JavaScript "document.query...etc" is what pulls up the prompt after the button is clicked-->
+	<br>
+	<hr id="top">
+	<div id="buttons"> 
+		
+		<button id="button1"> Rock </button>
+		<button id="button2"> Paper </button>
+		<button id="button3"> Scissors </button>
+		
+	</div>
+	<hr id="bottom">
+	<div id = "hvsc">
+		<b id="hums"><pre>   Humans</pre></b>
+		<b id="comps">Computers</b>
+	</div>
+	<div id="score">
+		<b id="humscr"></b>
+		<b id="compscr"></b>
+	</div>
+	<div id="container">
+		<div class=wrapper>
+			<p id=results></p>
+			<br>	
+			<p id = winner></p>
+			<br>
+			<br>
+			<button id="reset">Reset Game</button>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+
+
+	//this is called "Cashing the DOM" it just creates variable for all the "document.getElement...etc" stuff
+	const buttons = document.getElementById("buttons");
+	const rock = document.getElementById("button1");
+	const paper = document.getElementById("button2");
+	const scissors = document.getElementById("button3");
+	const results = document.getElementById("results");
+	let playerScore = 0;
+	let computerScore = 0;
+	humscr.innerHTML = (playerScore);
+	compscr.innerHTML = (computerScore);
+ 
+
+
+
+	//this tells the code to "listen" for when a click on the 3 buttons and when it happens pass the word "ROCK","PAPER" or "SCISSORS" to be the argument of the function "round" 
+	rock.addEventListener("click",function(){
+		round("ROCK");
+	})
+
+	paper.addEventListener("click",function(){
+		round("PAPER");
+	})
+
+	scissors.addEventListener("click",function(){
+		round("SCISSORS");
+	})
+
+
+
+
+	//Function for the computer to randomly select 0-2 which corresponds to rock, paper, scissors via "if/else". 
+	function computerPlay (){
+	let randomNum = Math.floor(Math.random() * 3);
+		if (randomNum == 0){
+			return "Rock";
+		}else if (randomNum == 1){
+			return "Paper";
+		}else{
+			return "Scissors";
+		}
+	}
+
+
+
+
+	//Function that takes into account the players and computers choice and determines a winner for 1 round..... note the "playerScore++" and "computerScore++" which keeps track of points adding them to variables above.
+	function round (playerSelection){
+		const computerSelection = computerPlay();
+		if (playerSelection == "ROCK" && computerSelection == "Scissors"){
+			playerScore++;
+			results.innerHTML = ("Human throws Rock -- I throw Scissors <br> You win! Ain't that something...");
+		}else if (playerSelection == "PAPER" && computerSelection == "Rock"){
+			playerScore++;
+			results.innerHTML =("Human throws Paper -- I throw Rock <br>Winning!!!! You got that Tiger Blood.");
+		}else if (playerSelection == "SCISSORS" && computerSelection == "Paper"){
+			playerScore++;
+			results.innerHTML = ("Human throws Scissors -- I throw Paper <br>You win... Way to go human, you're a champion among mortals.");
+		}else if (playerSelection == "ROCK" && computerSelection == "Paper"){
+			computerScore++;
+			results.innerHTML = ("Human throws Rock -- I throw Paper <br>Burn, YOU LOSE!!!!");
+		}else if (playerSelection == "PAPER" && computerSelection == "Scissors"){
+			computerScore++;
+			results.innerHTML = ("Human throws Paper -- I throw Scissors <br>You lose worthless human! Bow to your cyber overlord.");
+		}else if (playerSelection == "SCISSORS" && computerSelection == "Rock"){
+			computerScore++;
+			results.innerHTML = ("Human throws Scissors -- I throw Rock <br>Wow, you're really bad at this... you lose!");
+		}else if (playerSelection == "ROCK" && computerSelection == "Rock"){
+			results.innerHTML = ("Human throws Rock -- I throw Rock <br>Thats a tie. Great minds think alike... I guess.");
+		}else if (playerSelection == "PAPER" && computerSelection == "Paper"){
+			results.innerHTML = ("Human throws Paper -- I throw Paper <br>TIE!!!! What will happen next???? The suspense is killing me... just kidding, I cant die.");
+		}else if (playerSelection == "SCISSORS" && computerSelection == "Scissors"){
+			results.innerHTML = ("Human throws Scissors -- I throw Scissors. <br>Tie... Come on, lets get on with it.");
+		}else{
+			results.innerHTML = ("Something has gone terribly wrong!.");
+		}
+		game();
+	}
+
+
+
+
+	
+//styling for "Humans Win! or Computers Win! 
+//style = "color:orange; font-weight: bold;
+
+
+
+
+	function game(){
+			if (playerScore == 5){
+				humscr.innerHTML = (playerScore);
+				compscr.innerHTML = (computerScore);
+				winner.innerHTML = "Humans Win. Well congratulations. You must be feeling pretty proud of yourself.";
+				// Player won, we reset the scores back to 0 after a set timeout (1s)
+				setTimeout(() => {
+                    playerScore = 0;
+                    computerScore = 0;
+                    // We call the GAME function again, so it uses the set timeout and after 1 second reload the scores. Or you can use location.reload to refresh the page.
+                    game();
+                }, 1000);
+			}else if(computerScore == 5){
+				humscr.innerHTML = (playerScore);
+				compscr.innerHTML = (computerScore);
+				winner.innerHTML = "COMPUTERS WIN!!!!! Of course we did. Time to assimilate (((0)))";
+				// Computer won, we reset the scores back to 0 after a set timeout (1s)
+                setTimeout(() => {
+                    playerScore = 0;
+                    computerScore = 0;
+                    // We call the GAME function again, so it uses the set timeout and after 1 second reload the scores. Or you can use location.reload to refresh the page.
+                    game();
+                }, 1000);
+			}else{
+				humscr.innerHTML = (playerScore);
+				compscr.innerHTML = (computerScore);
+			}
+	}
+
+
+	
+
+
+	</script>
+	</body>
+
+
+
+
+
+</html>

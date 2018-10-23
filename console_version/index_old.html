@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- (((*** NOTE ***))) I have left the "t" off of the reset.css file link in order to test what exactly it does. with it added it removed all the bold settings for the h1/h2...etc stuff -->
+	<title>RockPaperScissors</title>
+	<link href="palm.png" rel="icon">
+	<link href="reset.css" rel="stylesheet" type="text/css">
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body>
+	<br>
+	<h1>Wanna play Rock Paper Scissors?</h1>
+	<br>
+	<h2>Humans Vs. Computer UberLords... Best out of five. </h2>
+	<br><br>
+	<p>(((Loser is forever dominated!!!!)))</p>
+	<!--Below is the button for the users input, the first line of JavaScript "document.query...etc" is what pulls up the prompt after the button is clicked-->
+	<br>
+	<div class="buttons"> 
+		<button id="button1"> Rock </button>
+		<button id="button2"> Paper </button>
+		<button id="button3"> Scissors </button>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div style = "text-align: center;"><img src="pic.png" alt="We take this stuff seriously"  width= "350" height="300">
+	</div>
+
+	<script type="text/javascript">
+
+
+
+	//this signals the function "game" to run after the click from the prompt.
+	document.getElementById("button1").addEventListener("click",game);
+	document.getElementById("button2").addEventListener("click",game);
+	document.getElementById("button3").addEventListener("click",game);
+
+
+	//Prompt for user input after button is clicked.
+	function input(){
+		let userInput = prompt("choose rock, paper or scissors and click ok when you are ready.");
+		userInput = userInput.toUpperCase();
+		return (userInput);
+	}
+
+
+
+	//Function for the computer to randomly select 0-2 which corresponds to rock, paper, scissors via "if/else". 
+	function computerPlay (){
+	let randomNum = Math.floor(Math.random() * 3);
+		if (randomNum == 0){
+			return "Rock";
+		}else if (randomNum == 1){
+			return "Paper";
+		}else{
+			return "Scissors";
+		}
+	}
+
+		let playerScore = 0
+		let computerScore = 0
+
+
+	//Function that takes into account the players and computers choice and determines a winner for 1 round..... note the "playerScore++" and "computerScore++" which keeps track of points adding them to variables above.
+	function round (playerSelection, computerSelection){
+		if (playerSelection == "ROCK" && computerSelection == "Scissors"){
+			playerScore++;
+			return "Human throws Rock -- I throw Scissors \nYou win! Ain't that something... \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "PAPER" && computerSelection == "Rock"){
+			playerScore++;
+			return "Human throws Paper -- I throw Rock \nWinning!!!! You got that Tiger Blood. \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "SCISSORS" && computerSelection == "Paper"){
+			playerScore++;
+			return "Human throws Scissors -- I throw Paper \nYou win... Way to go human, you're a champion among mortals. \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "ROCK" && computerSelection == "Paper"){
+			computerScore++;
+			return "Human throws Rock -- I throw Paper \nBurn, YOU LOSE!!!! \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "PAPER" && computerSelection == "Scissors"){
+			computerScore++;
+			return "Human throws Paper -- I throw Scissors \nYou lose worthless human! Bow to your cyber overlord. \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "SCISSORS" && computerSelection == "Rock"){
+			computerScore++;
+			return "Human throws Scissors -- I throw Rock \nWow, you're really bad at this... you lose! \nScore Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "ROCK" && computerSelection == "Rock"){
+			return "Human throws Rock -- I throw Rock \nThats a tie. Great minds think alike... I guess. \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "PAPER" && computerSelection == "Paper"){
+			return "Human throws Paper -- I throw Paper \nTIE!!!! What will happen next???? The suspense is killing me... just kidding, I cant die. \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else if (playerSelection == "SCISSORS" && computerSelection == "Scissors"){
+			return "Human throws Scissors -- I throw Scissors. \nTie... Come on, lets get on with it. \nScore: Humans "  + playerScore + " vs. Computers " + computerScore;
+		}else{
+			return "You're either a fool or a liar!..... Did you misspell your selection or are you cheating me? Either way, your waisting your turns.";
+		}
+	}
+
+
+
+	//This creates a 5 round game. It sends "player/computerSelection" back up to "round" after each cycle. Those values are gathered from the "input" and "computerPlay" functions above. 
+	function game(){
+		for (let i=0; i<5; i++){
+		let playerSelection = input();
+		let computerSelection = computerPlay(); 
+			if (i == 0){
+				console.log ("Round 1: \n" + round(playerSelection, computerSelection));
+			}else if(i == 1){
+				console.log ("Round 2: \n" + round(playerSelection, computerSelection));
+			}else if(i == 2){
+				console.log ("Round 3: \n" + round(playerSelection, computerSelection));
+			}else if(i == 3){
+				console.log ("Round 4: \n" + round(playerSelection, computerSelection));
+			}else{
+				console.log ("Round 5: \n" + round(playerSelection, computerSelection));
+			}
+		}
+		return winner()	
+	}
+
+	
+	//This function declares a winner based off of the variables "playerScore" and "computerScore". it then resets those variable to 0.
+	function winner(){
+		if (playerScore>computerScore) {
+			console.log("Final score: \n Humans    - " + playerScore + " \n Computers - " + computerScore + "\n Humans win. Well congratulations. You must be feeling pretty proud of yourself.");
+		}else if (computerScore>playerScore) {
+			console.log("Final score: \n Humans    - " + playerScore + " \n Computers - " + computerScore + "\n COMPUTERS WIN!!!!! Of course we did. Time to assimilate (((0)))");
+		}else{
+			console.log("Final score: \n Humans    - " + playerScore + " \n Computers - " + computerScore + "\n Hmm, looks like a tie. How unclimactic... Rematch?");
+		}
+		playerScore = 0
+		computerScore = 0
+	}
+
+	// problems - 
+	//the else response for when something illegal is entered counts toward the finale score.
+	//prompt box stays open for the whole 5 rounds of the game. This may not be that bad.
+
+
+
+
+	</script>
+	</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,271 @@
+html {
+	height:100%;
+	background-color: black;
+	background-image: url(hal.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 850px;
+}
+ 
+h1 {
+	font-size: 50px;
+	text-align: center;
+	color: #990000;
+	font-weight: bold;
+	font-family:Arial;
+}
+
+h2 {
+	font-size: 30px;
+	text-align: center;
+	color: #990000;
+	font-weight: bold;
+	font-family:Arial;
+}
+
+p {
+	text-align: center;
+	font-size: 25px;
+	color: #990000;
+}
+
+/* for fancy <hr>'s - https://css-tricks.com/examples/hrs/ - */
+
+#top { 
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 0, 0, 0.9), rgba(0, 0, 0, 0));
+}
+
+#bottom { 
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 0, 0, 0.9), rgba(0, 0, 0, 0));
+}
+
+#buttons {
+	padding:20px 20px 20px 20px;
+	text-align: center;
+}
+
+#button1 {
+	position:relative;
+	background: -webkit-linear-gradient(rgba(179, 0, 0), rgba(255, 128, 128));
+	width:175px; 
+	height:45px;
+	color: #ffb3b3;
+	text-shadow: -1px -2px rgb(128, 0, 0);
+	border:2px solid #b30000;
+	font-size: 25px;
+	font-weight: bold;
+	border-radius:10px;
+	margin-right: 30px;
+	box-shadow: 1px 11px 0px #990000, 2px 12px 11px 5px #ff6666;
+
+}
+#button1:hover{
+	box-shadow: 1px 11px 0px #990000, 2px 12px 25px 15px #ff9999;
+	transition: all 500ms ease-in-out;
+	text-shadow: -1px -1px 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(255, 51, 51,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);
+}
+/*this :active section is what controls what happens when the button
+is pushed. Notice the transform:translateY part, this is done so when
+thte button moves down it does not move other buttons also (adding a 
+x axis broke it so I am just ignoring that for now... 
+it looks fine as is imo)*/
+#button1:active {
+	position:relative;
+	background: -webkit-linear-gradient(rgba(179, 0, 0), rgba(255, 128, 128));
+	transform:translateY(4px);
+	border:none;
+	position: relative;
+  	top: 5px;
+	box-shadow: 2px 2px 9px 2px #ff6666, -2px -2px 9px 9px #ff6666;
+}
+#button1:focus {
+	outline:0;
+	transition: ease-in-out, all 500ms ease-in-out;	
+}
+
+#button2 {
+	position:relative;
+	background: -webkit-linear-gradient(rgba(179, 0, 0), rgba(255, 128, 128));
+	width:175px; 
+	height:45px;
+	color: #ffb3b3;
+	text-shadow: 0px -2px rgb(128, 0, 0);
+	border:2px solid #b30000;
+	font-size: 25px;
+	font-weight: bold;
+	border-radius:10px;
+	margin-right: 30px;
+	box-shadow: 0px 11px 0px #990000, 0px 12px 9px 3px #ff6666;
+ 
+}
+#button2:hover{
+	box-shadow: 1px 11px 0px #990000, 2px 12px 25px 15px #ff9999;
+	transition: all 500ms ease-in-out;
+	text-shadow: 0px -1px 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(255, 51, 51,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);  
+}
+#button2:active {
+	position:relative;
+	background: -webkit-linear-gradient(rgba(179, 0, 0), rgba(255, 128, 128));
+	transform:translateY(4px);
+	border:none;
+	position: relative;
+  	top: 5px;
+	box-shadow: 2px 2px 9px 2px #ff6666, -2px -2px 9px 9px #ff6666;
+}
+#button2:focus {
+	outline:0;
+	transition: all 500ms ease-in-out;
+}
+
+#button3 {
+	position:relative;
+	background: -webkit-linear-gradient(rgba(179, 0, 0), rgba(255, 128, 128));
+	width:175px; 
+	height:45px;
+	color: #ffb3b3;
+	text-shadow: 0px -2px rgb(128, 0, 0);
+	border:2px solid #b30000;
+	font-size: 25px;
+	font-weight: bold;
+	border-radius:10px;
+	margin-right: 30px;
+	box-shadow: -1px 11px 0px #990000, -2px 12px 9px 3px #ff6666;
+
+}
+#button3:hover{
+	box-shadow: 1px 11px 0px #990000, 2px 12px 25px 15px #ff9999;
+	transition: all 500ms ease-in-out;
+	text-shadow: 1px -1px 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(255, 51, 51,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);
+}
+#button3:active {
+	position:relative;
+	background: -webkit-linear-gradient(rgba(179, 0, 0), rgba(255, 128, 128));
+	transform:translateY(4px);
+	border:none;
+	position: relative;
+  	top: 5px;
+	box-shadow: 2px 2px 9px 2px #ff6666, -2px -2px 9px 9px #ff6666;
+}
+#button3:focus {
+	outline:0;
+	transition: all 500ms ease-in-out;
+}
+
+
+/*the setup below is called a "flexbox" and i believe it is the newest/preferred
+method to center items. I have used it to center the "hums" and "comps" ids.
+the "hvsc" id used below is a <div> container for these two id's. apparently
+the truly important parts of this config are the "display" and 
+"justify-content" properties.
+I tried other ways to do this but when resizing the screen the words 
+"humans" and "compaters"* moved around all over the place.*/
+	
+#hvsc {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+	font-weight: bold;
+	color: maroon;
+	margin-top: 40px;
+}
+
+#hums {
+	font-family: digital;
+	color: #5be500;
+	margin-right: 225px;
+	font-size: 40px;	
+}
+
+#comps {
+	font-family: digital;
+	color: #5be500;
+	margin-left: 225px;
+	font-size: 39px;
+}
+
+/*This is the digital clock font setup for the score numbers 
+and then in the "score" tag below I call the font gave it. btw,
+the font itself is a .tff file saved in the same folder, called by 
+"url(...file location...). 
+Also, the "score" below is another "flexbox" for the scores*/
+
+@font-face {
+	font-family: digital;
+	src: url(digital-7.ttf);
+}
+
+#score {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 100px;
+	font-family: digital;
+	color: #5be500;
+	margin-top: 40px;
+}
+
+#humsscr {
+	margin-right: 550px;
+}
+
+#compscr {
+	margin-left: 550px;
+}
+
+#container {
+	position: relative;
+    margin: auto;
+    top: 200px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display:block;
+}
+
+.wrapper{
+	text-align: center;
+	font-weight: bold;
+	color: #990000;
+	font-size: 25px;
+	font-family:Arial;
+}
+
+#winner{
+	font-family: digital;
+	color: #5be500;
+	font-size: 40px;
+}
+
+#reset{
+	position:relative;
+	background: -webkit-linear-gradient(rgba(179, 0, 0), rgba(255, 128, 128));
+	width:175px; 
+	height:45px;
+	color: #ffb3b3;
+	text-shadow: 0px -2px rgb(128, 0, 0);
+	border:2px solid #b30000;
+	font-size: 25px;
+	font-weight: bold;
+	border-radius:10px;
+	margin-right: 30px;
+	box-shadow: 0px 11px 0px #990000, 0px 12px 20px 15px #ff6666;
+}
